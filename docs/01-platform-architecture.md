@@ -357,6 +357,11 @@ The AFT overview page says AFT supports HCP Terraform, Terraform Enterprise and 
 
 **The risk to manage:** the automatic `OrganizationAccountAccessRole` is a full-administrator role. It conflicts with "no all-powerful role". The design uses it only to bootstrap the baseline, with an SCP and an alert on its use (alert design not yet researched). Whether it can be removed or limited after bootstrap is **unverified**.
 
+**Accounts that already exist.** Vending is for new accounts only. The 60 existing accounts are not created again. They follow the migration path (`docs/04`): add the `baseline` layer (same two modules as step 5), then move the team's repos in waves with `import` and `moved`. The register in `docs/04`, 4.1 lists stacks, not accounts. The design does **not** yet say how an existing account is recorded in the `org` layer. This is **unverified** and not designed in detail. Two things to check before the first wave:
+
+- **Access for the baseline.** The role `OrganizationAccountAccessRole` is created automatically for accounts created through Organizations (see the table above). We did not read what an account that was invited into the organization gets, so how the baseline reaches such an account is **unverified**.
+- **Old admin roles.** An old account may already hold broad roles. The inventory step in `docs/04`, 4.1 should find them. This is a design assumption, not a tested step.
+
 ### What we can and cannot show
 
 | Can show (one account) | Cannot show |
@@ -368,6 +373,7 @@ The AFT overview page says AFT supports HCP Terraform, Terraform Enterprise and 
 
 - Design only. No account is created.
 - The permission set for the `org` apply role beyond `organizations:CreateAccount` is **unverified**.
+- How an existing account is recorded in the `org` layer, and how the baseline reaches an invited account, are **unverified** (see "Accounts that already exist" above).
 - We did not read the *AFT account provisioning pipeline* page or the Organizations CLI procedure.
 
 ## Open items
