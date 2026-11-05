@@ -1,0 +1,23 @@
+# Local notes and tooling (not part of the submission)
+ASSESSMENT-BRIEF.md
+BRAINSTORM-FINDINGS.md
+CHEATSHEET.md
+TECHNICAL-GUIDE.md
+VIEW-ALL.html
+build-view.py
+
+# Local copies of third-party reference material (original URLs are in the README)
+references/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+*.tfvars
+!example.tfvars
+.terraform.lock.hcl.bak
+
+# macOS
+.DS_Store

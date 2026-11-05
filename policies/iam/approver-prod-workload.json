@@ -1,0 +1,31 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ApproveProdWorkloadOnly",
+      "Effect": "Allow",
+      "Action": "codepipeline:PutApprovalResult",
+      "Resource": "arn:aws:codepipeline:ap-southeast-5:111122223333:prod-workload/Approval/ManualApproval"
+    },
+    {
+      "Sid": "ViewPipelineState",
+      "Effect": "Allow",
+      "Action": [
+        "codepipeline:GetPipelineState",
+        "codepipeline:GetPipelineExecution"
+      ],
+      "Resource": "arn:aws:codepipeline:ap-southeast-5:111122223333:prod-workload"
+    },
+    {
+      "Sid": "ApproverCannotChangeTheGate",
+      "Effect": "Deny",
+      "Action": [
+        "codepipeline:UpdatePipeline",
+        "codepipeline:DeletePipeline",
+        "codepipeline:DisableStageTransition",
+        "codepipeline:EnableStageTransition"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

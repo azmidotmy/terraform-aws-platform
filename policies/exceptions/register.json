@@ -1,0 +1,14 @@
+{
+  "exceptions": [
+    {
+      "id": "EXC-001",
+      "rule": "SCP DenyStateBucketDeletion: s3:PutBucketVersioning",
+      "scope": "nonprod-workload, team-payments, legacy bucket only",
+      "owner": "team-payments",
+      "reason": "Legacy bucket must change its versioning once while it is moved under the platform",
+      "approved_by": "platform-approver",
+      "approved_on": "2026-11-04T00:00:00Z",
+      "expires": "2026-12-04T00:00:00Z"
+    }
+  ]
+}

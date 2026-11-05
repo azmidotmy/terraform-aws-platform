@@ -1,0 +1,24 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ServiceBoundary",
+      "Effect": "Allow",
+      "Action": [
+        "s3:*",
+        "kms:*",
+        "logs:*"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "NeverTouchOrganizationOrIdentity",
+      "Effect": "Deny",
+      "Action": [
+        "organizations:*",
+        "iam:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
